@@ -43,9 +43,7 @@ app.get('/home',verifyUser,(req,res)=>{
 })
 
 app.post('/signup', (req, res) => {
-    if(req.body.password!=req.body.confirm_password){
-        return res.redirect('back');
-    }
+   
     const sql = "INSERT INTO login(`name`,`email`,`password`)VALUES(?)";
     bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
         if (err) {
